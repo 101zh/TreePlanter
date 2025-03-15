@@ -3,19 +3,30 @@ package treeplanter;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import static treeplanter.TerminalCommands.terminalCommands;
 
 public class UI {
 
     public static void startGame() {
         Scanner scanner = new Scanner(System.in);
 
-        typeOutMessageln("After finishing one of your projects you...");
-        clearAfterUserInput(scanner);
+        // typeOutMessageln("After finishing one of your projects you...");
+        // clearAfterUserInput(scanner);
+
+        while (true) {
+            invokeCommand(scanner.nextLine());
+        }
     }
 
-    private static void typeOutMessageln(String messsage){
+    private static void typeOutMessageln(String messsage) {
         typeOutMessage("After finishing one of your projects you", TimeUnit.MILLISECONDS, 50);
         System.out.println();
+    }
+
+    private static void invokeCommand(String str) {
+        str = str.toLowerCase().trim().replaceAll("\\s+", " ") + " ";
+        int index = str.indexOf(" ");
+        terminalCommands.get(str.substring(0, index)).action(str.substring(index + 1).split(" "));
     }
 
     private static void typeOutMessage(String message, TimeUnit unit, long delay) {
