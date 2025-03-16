@@ -9,13 +9,15 @@ public class TerminalCommands {
         new Help();
         new Status();
         new Plant();
-        new Buy();
+        new Hire();
         new Shop();
     }
 
     public static class Help extends Command {
         @Override
         public void action(String[] args) {
+            System.out.println("How to call a command:");
+            System.out.println("\t<command-name> (param1, param2, ... paramN)");
             if (args[0].isEmpty()) {
                 System.out.println("Commands:");
                 for (Command command : terminalCommands.values()) {
@@ -37,7 +39,7 @@ public class TerminalCommands {
 
         @Override
         public String toString() {
-            return "help - shows ...";
+            return UI.BOLD + "help" + UI.BOLDOFF + " - shows what you can do";
         }
     }
 
@@ -57,7 +59,7 @@ public class TerminalCommands {
 
         @Override
         public String toString() {
-            return "status - shows ....";
+            return UI.BOLD + "status" + UI.BOLDOFF + " - shows your current status";
         }
     }
 
@@ -74,11 +76,11 @@ public class TerminalCommands {
 
         @Override
         public String toString() {
-            return "plant - plants ...";
+            return UI.BOLD + "plant" + UI.BOLDOFF + " - you'll plant one tree giving you one trea";
         }
     }
 
-    public static class Buy extends Command {
+    public static class Hire extends Command {
 
         @Override
         public void action(String[] args) {
@@ -97,7 +99,7 @@ public class TerminalCommands {
             try {
                 amountBought = Integer.parseInt(args[1]);
                 if (amountBought < 1) {
-                    System.out.println("You can't buy that much");
+                    System.out.println("You can't hire that much");
                     return;
                 }
             } catch (NumberFormatException e) {
@@ -116,12 +118,12 @@ public class TerminalCommands {
 
         @Override
         public String getID() {
-            return "buy";
+            return "hire";
         }
 
         @Override
         public String toString() {
-            return "buy - buys ...";
+            return UI.BOLD + "hire" + UI.BOLDOFF + " <shop ID> <integer> - hires workers to help your cause";
         }
     }
 
@@ -140,7 +142,7 @@ public class TerminalCommands {
 
         @Override
         public String toString() {
-            return "shop - displays the shop";
+            return UI.BOLD + "shop" + UI.BOLDOFF + " - displays the shop";
         }
     }
 }
