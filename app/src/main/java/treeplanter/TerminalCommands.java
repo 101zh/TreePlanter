@@ -44,7 +44,9 @@ public class TerminalCommands {
 
         @Override
         public void action(String[] args) {
-            System.out.println("I do thingy " + args[0]);
+            System.out.println("Treas Owned: " + TreeGenerators.treas + "      Trees Planted: "
+                    + TreeGenerators.treesPlanted + "\n" +
+                    "Total Trees Planted Per Second: " + TreeGenerators.getTotalTreesGeneratedPerSecond());
         }
 
         @Override
@@ -61,7 +63,7 @@ public class TerminalCommands {
     public static class Plant extends Command {
         @Override
         public void action(String[] args) {
-            TreeGenerators.treas += 1;
+            TreeGenerators.addTreas(1);
         }
 
         @Override
@@ -108,7 +110,7 @@ public class TerminalCommands {
             }
 
             treeGenerator.buy(amountBought);
-            TreeGenerators.treas -= cost;
+            TreeGenerators.removeTreas(cost);
         }
 
         @Override

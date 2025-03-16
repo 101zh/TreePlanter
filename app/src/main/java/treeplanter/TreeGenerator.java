@@ -22,14 +22,17 @@ public class TreeGenerator {
 
     public long getTrees() {
         long currentTime = System.currentTimeMillis();
-        long seconds = (lastTime - currentTime) / 1000;
-        lastTime = currentTime;
+        double seconds = (currentTime - lastTime) / 1000.0;
+        long roundedSeconds = (long) seconds;
 
-        return calculateTrees(seconds);
+        if (seconds > roundedSeconds)
+            lastTime = currentTime - (long) ((seconds - roundedSeconds) * 1000);
+
+        return calculateTrees(roundedSeconds);
     }
 
     private long calculateTrees(long seconds) {
-        return (long) (seconds * unitsOwned * treesPerSecondPerUnit * multiplier);
+        return (long) (seconds * getTreesGeneratedPerSecond());
     }
 
     public void addMultiplier(double multiplier) {
@@ -45,6 +48,10 @@ public class TreeGenerator {
         }
 
         return (int) (baseCost * ((Math.pow(priceRateIncrease, n + 1) - 1) / (priceRateIncrease - 1)));
+    }
+
+    public int getTreesGeneratedPerSecond() {
+        return (int) (treesPerSecondPerUnit * unitsOwned * multiplier);
     }
 
     public void buy(int n) {
