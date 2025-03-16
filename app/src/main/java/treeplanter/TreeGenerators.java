@@ -9,7 +9,12 @@ public class TreeGenerators {
     static long treesPlanted;
 
     TreeGenerators() {
-        new TreeGenerator("volunteer", "Student Volunteer", 5, 5);
+        new TreeGenerator("student", "Student Volunteer", "I guess that free labor isn't free anymore `\\_(?_?)_/`", 5,
+                1);
+        new TreeGenerator("programmer", "Programmer",
+                "\"I plant trees at O(log(n)) time)\" (This isn't true it's actually O(n), but no ones's smart enough to correct them)",
+                10, 5);
+        
     }
 
     public static void updateTreeValues() {

@@ -4,6 +4,7 @@ public class TreeGenerator {
 
     private String id;
     private String name;
+    private String descrip;
     private long lastTime;
     private int unitsOwned = 0;
     private int baseCost;
@@ -11,10 +12,11 @@ public class TreeGenerator {
     private double multiplier = 1;
     private int treesPerSecondPerUnit;
 
-    public TreeGenerator(String id, String name, int baseCost, int treesPerSecondPerUnit) {
+    public TreeGenerator(String id, String name, String description, int baseCost, int treesPerSecondPerUnit) {
         lastTime = System.currentTimeMillis();
         this.id = id;
         this.name = name;
+        this.descrip = description;
         this.baseCost = baseCost;
         this.treesPerSecondPerUnit = treesPerSecondPerUnit;
         TreeGenerators.treeGenerators.put(id, this);
@@ -61,7 +63,11 @@ public class TreeGenerator {
     @Override
     public String toString() {
         return UI.BOLD + name + UI.BOLDOFF + "     ID: " + id + "\n" +
-                "   Trees Generated Per Second: " + (int) (calculateTrees(1)) + "\n" +
-                "   Number: " + unitsOwned + "     Cost: " + getNextNUnitsCost(1) + " treas";
+                "   Your " + name + "s plant " + UI.BOLD + (calculateTrees(1)) + UI.BOLDOFF + " per second\n" +
+                "   Each " + name + " plant " + UI.BOLD + (treesPerSecondPerUnit * multiplier) + UI.BOLDOFF
+                + " per second\n"
+                +
+                "   Number: " + unitsOwned + "     Cost: " + getNextNUnitsCost(1) + " treas" + "\n" +
+                "   " + descrip;
     }
 }
