@@ -10,6 +10,7 @@ public class TerminalCommands {
         new Status();
         new Plant();
         new Buy();
+        new Shop();
     }
 
     public static class Help extends Command {
@@ -124,4 +125,22 @@ public class TerminalCommands {
         }
     }
 
+    public static class Shop extends Command {
+        @Override
+        public void action(String[] args) {
+            for (TreeGenerator treeGenerator : TreeGenerators.treeGenerators.values()) {
+                System.out.println(treeGenerator + "\n");
+            }
+        }
+
+        @Override
+        public String getID() {
+            return "shop";
+        }
+
+        @Override
+        public String toString() {
+            return "shop - displays the shop";
+        }
+    }
 }
