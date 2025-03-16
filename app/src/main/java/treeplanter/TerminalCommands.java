@@ -10,22 +10,7 @@ public class TerminalCommands {
         new Status();
     }
 
-    public static class Command {
-        public Command() {
-            terminalCommands.put(getID(), this);
-        }
-
-        public void action(String[] str) {
-            System.out.println("Unimplemented");
-        };
-
-        public String getID() {
-            return "Unimplemented";
-        };
-    }
-
     public static class Help extends Command {
-
         @Override
         public void action(String[] str) {
             if (str[0].isEmpty()) {
