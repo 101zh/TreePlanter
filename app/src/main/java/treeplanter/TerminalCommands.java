@@ -19,7 +19,11 @@ public class TerminalCommands {
                     System.out.println("\t" + command);
                 }
             } else {
-                System.out.println(terminalCommands.get(str[0])); // TODO: Handle bad input
+                Command command = terminalCommands.get(str[0]);
+                if (command == null)
+                    System.out.println("That's not a command");
+                else
+                    System.out.println(terminalCommands.get(str[0]));
             }
         }
 
