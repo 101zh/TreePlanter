@@ -27,9 +27,14 @@ public class UI {
     }
 
     private static void invokeCommand(String str) {
+        TreeGenerators.updateTreeValues();
         str = str.toLowerCase().trim().replaceAll("\\s+", " ") + " ";
         int index = str.indexOf(" ");
-        terminalCommands.get(str.substring(0, index)).action(str.substring(index + 1).split(" "));
+        try {
+            terminalCommands.get(str.substring(0, index)).action(str.substring(index + 1).split(" "));
+        } catch (NullPointerException e) {
+            System.out.println("That's not a valid command");
+        }
     }
 
     private static void typeOutMessage(String message, TimeUnit unit, long delay) {
