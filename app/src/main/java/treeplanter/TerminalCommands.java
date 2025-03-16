@@ -8,6 +8,7 @@ public class TerminalCommands {
     public TerminalCommands() {
         new Help();
         new Status();
+        new Plant();
         new Buy();
     }
 
@@ -54,6 +55,23 @@ public class TerminalCommands {
         @Override
         public String toString() {
             return "status - shows ....";
+        }
+    }
+
+    public static class Plant extends Command {
+        @Override
+        public void action(String[] args) {
+            TreeGenerators.treas += 1;
+        }
+
+        @Override
+        public String getID() {
+            return "plant";
+        }
+
+        @Override
+        public String toString() {
+            return "plant - plants ...";
         }
     }
 

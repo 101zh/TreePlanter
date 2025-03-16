@@ -8,7 +8,7 @@ public class TreeGenerators {
     public static long treas;
 
     TreeGenerators() {
-        new TreeGenerator("volunteer", "Student Volunteer", 100, 5);
+        new TreeGenerator("volunteer", "Student Volunteer", 5, 5);
     }
 
     public void updateTreeValues() {
