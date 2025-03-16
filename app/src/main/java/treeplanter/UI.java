@@ -7,6 +7,9 @@ import static treeplanter.TerminalCommands.terminalCommands;
 
 public class UI {
 
+    public static final String BOLD = "\033[0;1m";
+    public static final String BOLDOFF = "\033[0;0m";
+
     public static void startGame() {
         Scanner scanner = new Scanner(System.in);
 
