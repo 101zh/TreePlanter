@@ -7,7 +7,7 @@ public class Command {
         terminalCommands.put(getID(), this);
     }
 
-    public void action(String[] str) {
+    public void action(String[] args) {
         System.out.println("Unimplemented");
     };
 
