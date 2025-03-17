@@ -68,11 +68,13 @@ public class TreeGenerator {
     @Override
     public String toString() {
         return UI.BOLD + name + UI.BOLDOFF + "     ID: " + id + "\n" +
-                "   Your " + name + "s plant " + UI.BOLD + (calculateTrees(1)) + UI.BOLDOFF + " per second\n" +
-                "   Each " + name + " plant " + UI.BOLD + (treesPerSecondPerUnit * multiplier) + UI.BOLDOFF
-                + " per second\n"
+                "   Your " + name.toLowerCase() + "s plant " + UI.BOLD + (calculateTrees(1)) + UI.BOLDOFF
+                + " trees per second\n" +
+                "   Each " + name.toLowerCase() + " plants " + UI.BOLD + (treesPerSecondPerUnit * multiplier)
+                + UI.BOLDOFF
+                + " trees per second\n"
                 +
-                "   Number: " + unitsOwned + "     Cost: " + getNextNUnitsCost(1) + " treas" + "\n" +
+                "   Number Owned: " + unitsOwned + "     Cost: " + getNextNUnitsCost(1) + " treas" + "\n" +
                 "   " + descrip;
     }
 }
