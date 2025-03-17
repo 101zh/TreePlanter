@@ -130,8 +130,24 @@ public class TerminalCommands {
     public static class Shop extends Command {
         @Override
         public void action(String[] args) {
+            int amountLookingFor;
+            if (args[0].isEmpty()) {
+                amountLookingFor = 1;
+            } else {
+                try {
+                    amountLookingFor = Integer.parseInt(args[0]);
+                    if (amountLookingFor < 1) {
+                        System.out.println("Ummm, why are you looking to buy " + amountLookingFor);
+                        return;
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("That's not a number");
+                    return;
+                }
+            }
+
             for (TreeGenerator treeGenerator : TreeGenerators.treeGeneratorsSorted) {
-                System.out.println(treeGenerator + "\n");
+                System.out.println(treeGenerator.getDescription(amountLookingFor) + "\n");
             }
         }
 
@@ -142,7 +158,7 @@ public class TerminalCommands {
 
         @Override
         public String toString() {
-            return UI.BOLD + "shop" + UI.BOLDOFF + " - displays the shop";
+            return UI.BOLD + "shop <amount-looking-to-buy>" + UI.BOLDOFF + " - displays the shop";
         }
     }
 }

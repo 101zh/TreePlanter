@@ -67,6 +67,10 @@ public class TreeGenerator implements Comparable<TreeGenerator> {
 
     @Override
     public String toString() {
+        return getDescription(1);
+    }
+
+    public String getDescription(int amountLookingToBuy) {
         return UI.BOLD + name + UI.BOLDOFF + "     ID: " + id + "\n" +
                 "   Your " + name.toLowerCase() + "s plant " + UI.BOLD + (calculateTrees(1)) + UI.BOLDOFF
                 + " trees per second\n" +
@@ -74,7 +78,8 @@ public class TreeGenerator implements Comparable<TreeGenerator> {
                 + UI.BOLDOFF
                 + " trees per second\n"
                 +
-                "   Number Owned: " + unitsOwned + "     Cost: " + getNextNUnitsCost(1) + " treas" + "\n" +
+                "   Number Owned: " + unitsOwned + "     Cost: " + getNextNUnitsCost(amountLookingToBuy) + " treas"
+                + "\n" +
                 "   " + descrip;
     }
 
