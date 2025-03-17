@@ -45,11 +45,16 @@ public class TreeGenerator {
         n -= 1;
         if (n < 0) {
             throw new IllegalArgumentException("n < 1");
-        } else if (n == 0) {
-            return (int) (baseCost * Math.pow(1.15, n));
         }
 
-        return (int) (baseCost * ((Math.pow(priceRateIncrease, n + 1) - 1) / (priceRateIncrease - 1)));
+        double totalCostToNow = baseCost
+                * ((Math.pow(priceRateIncrease, (unitsOwned - 1) + 1) - 1) / (priceRateIncrease - 1));
+        double totalNextCost = baseCost
+                * ((Math.pow(priceRateIncrease, (unitsOwned + n) + 1) - 1) / (priceRateIncrease - 1));
+
+        double cost = totalNextCost - totalCostToNow;
+
+        return (int) cost;
     }
 
     public int getTreesGeneratedPerSecond() {
