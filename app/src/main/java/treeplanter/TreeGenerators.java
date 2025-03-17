@@ -14,7 +14,9 @@ public class TreeGenerators {
         new TreeGenerator("programmer", "Programmer",
                 "\"I plant trees at O(log(n)) time)\" (This isn't true it's actually O(n), but no ones's smart enough to correct them)",
                 10, 5);
-        
+        new TreeGenerator("bank", "Bank",
+                "The big banks don't fail!",
+                1000, 100);
     }
 
     public static void updateTreeValues() {
