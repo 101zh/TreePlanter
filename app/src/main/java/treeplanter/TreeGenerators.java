@@ -1,10 +1,12 @@
 package treeplanter;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class TreeGenerators {
 
     public static HashMap<String, TreeGenerator> treeGenerators = new HashMap<String, TreeGenerator>();
+    public static TreeGenerator[] treeGeneratorsSorted;
     static long treas;
     static long treesPlanted;
 
@@ -17,6 +19,10 @@ public class TreeGenerators {
         new TreeGenerator("bank", "Bank",
                 "The big banks don't fail!",
                 1000, 100);
+
+        treeGeneratorsSorted = new TreeGenerator[TreeGenerators.treeGenerators.size()];
+        TreeGenerators.treeGenerators.values().toArray(treeGeneratorsSorted);
+        Arrays.sort(treeGeneratorsSorted);
     }
 
     public static void updateTreeValues() {

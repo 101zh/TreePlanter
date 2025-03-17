@@ -130,7 +130,7 @@ public class TerminalCommands {
     public static class Shop extends Command {
         @Override
         public void action(String[] args) {
-            for (TreeGenerator treeGenerator : TreeGenerators.treeGenerators.values()) {
+            for (TreeGenerator treeGenerator : TreeGenerators.treeGeneratorsSorted) {
                 System.out.println(treeGenerator + "\n");
             }
         }

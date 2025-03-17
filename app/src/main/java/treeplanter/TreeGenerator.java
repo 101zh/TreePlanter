@@ -1,6 +1,6 @@
 package treeplanter;
 
-public class TreeGenerator {
+public class TreeGenerator implements Comparable<TreeGenerator> {
 
     private String id;
     private String name;
@@ -76,5 +76,10 @@ public class TreeGenerator {
                 +
                 "   Number Owned: " + unitsOwned + "     Cost: " + getNextNUnitsCost(1) + " treas" + "\n" +
                 "   " + descrip;
+    }
+
+    @Override
+    public int compareTo(TreeGenerator o) {
+        return this.baseCost - o.baseCost;
     }
 }
