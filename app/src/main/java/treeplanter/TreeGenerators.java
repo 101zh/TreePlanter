@@ -9,21 +9,30 @@ public class TreeGenerators {
     public static TreeGenerator[] treeGeneratorsSorted;
     static long treas;
     static long treesPlanted;
-    static long treeGoal = 10000;
+    static long treeGoal = 1000000;
+    static int multiplier = 1;
 
     TreeGenerators() {
         new TreeGenerator("student", "Student Volunteer", "I guess that free labor isn't free anymore `\\_(?_?)_/`", 5,
                 1);
         new TreeGenerator("programmer", "Programmer",
                 "\"I plant trees at O(log(n)) time)\" (This isn't true it's actually O(n), but no ones's smart enough to correct them)",
-                10, 5);
+                500, 5);
+        new TreeGenerator("farm", "Tree Farm",
+                "Go and support those local farmers ... they really need it",
+                1000, 50);
         new TreeGenerator("bank", "Bank",
                 "The big banks don't fail!",
-                1000, 100);
+                10000, 100);
 
         treeGeneratorsSorted = new TreeGenerator[TreeGenerators.treeGenerators.size()];
         TreeGenerators.treeGenerators.values().toArray(treeGeneratorsSorted);
         Arrays.sort(treeGeneratorsSorted);
+    }
+
+    public static void activate2ndStage() {
+        multiplier = -1;
+        treeGoal *= (1 / 4);
     }
 
     public static long getTreeGoal() {
@@ -38,7 +47,7 @@ public class TreeGenerators {
 
     public static void addTreas(long treas) {
         TreeGenerators.treas += treas;
-        TreeGenerators.treesPlanted += treas;
+        TreeGenerators.treesPlanted += multiplier * treas;
     }
 
     public static void removeTreas(long treas) {
@@ -48,7 +57,7 @@ public class TreeGenerators {
     public static int getTotalTreesGeneratedPerSecond() {
         int perSecValue = 0;
         for (TreeGenerator treeGenerator : treeGenerators.values()) {
-            perSecValue += treeGenerator.getTreesGeneratedPerSecond();
+            perSecValue += multiplier * treeGenerator.getTreesGeneratedPerSecond();
         }
 
         return perSecValue;

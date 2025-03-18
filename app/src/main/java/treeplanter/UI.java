@@ -22,7 +22,7 @@ public class UI {
         midway(scanner);
         TreeGenerators.activate2ndStage();
 
-        while (TreeGenerators.treesPlanted > TreeGenerators.getTreeGoal() / 2) {
+        while (TreeGenerators.treesPlanted > TreeGenerators.getTreeGoal()) {
             invokeCommand(scanner.nextLine());
         }
 
@@ -84,7 +84,7 @@ public class UI {
         clearAfterUserInput(scanner);
         typeOutMessageln("But you can still correct your wrongs");
         typeOutMessageln("It's time to deroot your trees");
-        typeOutMessageln("Not all of them though, maybe just half of them");
+        typeOutMessageln("Not all of them though, maybe just three-fourths of them");
         clearAfterUserInput(scanner);
         System.out.println();
         typeOutMessageln("You got this!");
