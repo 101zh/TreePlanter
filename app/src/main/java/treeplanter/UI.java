@@ -13,13 +13,13 @@ public class UI {
     public static void startGame() {
         Scanner scanner = new Scanner(System.in);
 
-        introduction(scanner);
+        // introduction(scanner);
 
-        while (true) {
+        while (TreeGenerators.treesPlanted < TreeGenerators.getTreeGoal()) {
             invokeCommand(scanner.nextLine());
         }
 
-        // scanner.close();
+        scanner.close();
     }
 
     private static void introduction(Scanner scanner) {
@@ -126,7 +126,7 @@ public class UI {
         clearConsole();
     }
 
-    private static void clearConsole() {
+    public static void clearConsole() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();

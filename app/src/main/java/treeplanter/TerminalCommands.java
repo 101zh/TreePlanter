@@ -161,4 +161,23 @@ public class TerminalCommands {
             return UI.BOLD + "shop <amount-looking-to-buy>" + UI.BOLDOFF + " - displays the shop";
         }
     }
+
+    public static class Clear extends Command {
+        @Override
+        public void action(String[] args) {
+            UI.clearConsole();
+        }
+
+        @Override
+        public String getID() {
+            return "clear";
+        }
+
+        @Override
+        public String toString() {
+            return UI.BOLD + "clear" + UI.BOLDOFF + " - clears the console of any text";
+        }
+
+    }
+
 }
