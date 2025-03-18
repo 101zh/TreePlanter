@@ -13,16 +13,42 @@ public class UI {
     public static void startGame() {
         Scanner scanner = new Scanner(System.in);
 
-        // typeOutMessageln("After finishing one of your projects you...");
-        // clearAfterUserInput(scanner);
+        introduction(scanner);
 
         while (true) {
             invokeCommand(scanner.nextLine());
         }
+
+        // scanner.close();
+    }
+
+    private static void introduction(Scanner scanner) {
+        typeOutMessageln("After finishing one of your projects you decide it's time to go outside");
+        clearAfterUserInput(scanner);
+        String a = "                                    .......   ....." + "\n" +
+                "                                     `$$$$$..*******." + "\n" +
+                "                                      ````$$$*****$$$$." + "\n" +
+                "                                    .%%%%%%&&***&%%%%***." + "\n" +
+                "                                      **%&#####&%***." + "\n" +
+                "                  you -> ^_^           `   @@@" + "\n" +
+                "                      _____________________@@@_______" + "\n" +
+                "                     /                           ___/" + "\n" +
+                "                ____/                     ______/" + "\n" +
+                "            ___/                        _|" + "\n" +
+                "           /                           /" + "\n" +
+                "         _/                            \\\\_" + "\n" +
+                "        /                                 \\";
+
+        typeOutMessage(a, TimeUnit.MILLISECONDS, 2);
+        System.out.println();
+        typeOutMessageln("You climb and scale the closest mountain to you, finding a cherry blossom tree atop it");
+        clearAfterUserInput(scanner);
+
+        typeOutMessageln("Hello my child, I see great potential within you");
     }
 
     private static void typeOutMessageln(String messsage) {
-        typeOutMessage("After finishing one of your projects you", TimeUnit.MILLISECONDS, 50);
+        typeOutMessage(messsage, TimeUnit.MILLISECONDS, 50);
         System.out.println();
     }
 
@@ -51,7 +77,7 @@ public class UI {
                 unit.sleep(delay);
             }
             if (message.length() % 2 == 1) {
-                System.out.print("\b");
+                System.out.print("\b "); // There's a space here otherwise \b won't work ¯\_(ツ)_/¯
             }
         } catch (Exception e) {
             e.fillInStackTrace();
