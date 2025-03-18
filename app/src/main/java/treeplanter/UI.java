@@ -13,11 +13,20 @@ public class UI {
     public static void startGame() {
         Scanner scanner = new Scanner(System.in);
 
-        // introduction(scanner);
+        introduction(scanner);
 
         while (TreeGenerators.treesPlanted < TreeGenerators.getTreeGoal()) {
             invokeCommand(scanner.nextLine());
         }
+
+        midway(scanner);
+        TreeGenerators.activate2ndStage();
+
+        while (TreeGenerators.treesPlanted > TreeGenerators.getTreeGoal() / 2) {
+            invokeCommand(scanner.nextLine());
+        }
+
+        ending(scanner);
 
         scanner.close();
     }
@@ -61,6 +70,37 @@ public class UI {
         clearAfterUserInput(scanner);
 
         typeOutMessageln("(type \"help\" to view what else you can do)");
+    }
+
+    private static void midway(Scanner scanner) {
+        typeOutMessageln("Hey");
+        typeOutMessageln("HEY HEY HEY");
+        clearAfterUserInput(scanner);
+        typeOutMessageln("After reaching your goal, you realize that the world is worse off than it was");
+        typeOutMessageln("Sea levels have risen 100% quicker than before ...");
+        typeOutMessageln("There have been more fires than ever");
+        typeOutMessageln("And the elderly are suffering; they barely breath anymore");
+        typeOutMessageln("You realize that planting trees, especially only the same type of tree was a fatal mistake");
+        clearAfterUserInput(scanner);
+        typeOutMessageln("But you can still correct your wrongs");
+        typeOutMessageln("It's time to deroot your trees");
+        typeOutMessageln("Not all of them though, maybe just half of them");
+        clearAfterUserInput(scanner);
+        System.out.println();
+        typeOutMessageln("You got this!");
+        typeOutMessageln("YOU GOT THIS!!!!");
+    }
+
+    private static void ending(Scanner scanner) {
+        typeOutMessageln("Congrats!");
+        typeOutMessageln("You did it");
+        typeOutMessageln("Even if you simultaeneously destroyed and fixed the world");
+        typeOutMessageln("I will commend your efforts");
+        clearAfterUserInput(scanner);
+
+        fillInMessage(ASCIIArt.tree, TimeUnit.MICROSECONDS, 50);
+        System.out.println();
+        typeOutMessageln("Thanks for playing! ^-^");
     }
 
     private static void typeOutMessageln(String messsage) {
