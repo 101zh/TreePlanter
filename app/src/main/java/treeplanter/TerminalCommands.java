@@ -51,8 +51,7 @@ public class TerminalCommands {
             System.out.println("Treas Owned: " + TreeGenerators.treas + "      Trees Planted: "
                     + TreeGenerators.treesPlanted + "\n" +
                     "Total Trees Planted Per Second: " + TreeGenerators.getTotalTreesGeneratedPerSecond() + "\n" +
-                    "Percentage to " + TreeGenerators.getTreeGoal() + " trees planted: "
-                    + (int) ((double) TreeGenerators.treesPlanted / TreeGenerators.getTreeGoal() * 100) + "%");
+                    "Trees planted goal: " + TreeGenerators.getTreeGoal());
         }
 
         @Override
