@@ -39,7 +39,7 @@ public class UI {
                 "         _/                            \\\\_" + "\n" +
                 "        /                                 \\";
 
-        typeOutMessage(a, TimeUnit.MILLISECONDS, 2);
+        fillInMessage(a, TimeUnit.MILLISECONDS, 5);
         System.out.println();
         typeOutMessageln("You climb and scale the closest mountain to you, finding a cherry blossom tree atop it");
         clearAfterUserInput(scanner);
@@ -84,7 +84,27 @@ public class UI {
         }
     }
 
+    private static void fillInMessage(String message, TimeUnit unit, long delay) {
+        char[] charArray = message.toCharArray();
+
+        try {
+            for (int i = 0; i < charArray.length; i++) {
+                System.out.print(charArray[i]);
+                unit.sleep(delay);
+            }
+        } catch (Exception e) {
+            e.fillInStackTrace();
+        }
+    }
+
     private static void clearAfterUserInput(Scanner scanner) {
+        try {
+            while(System.in.available() > 0) {
+                System.in.read(new byte[System.in.available()]);
+            }
+        } catch (IOException e) {
+            e.fillInStackTrace();
+        }
         System.out.println("(ENTER)");
         scanner.nextLine();
         clearConsole();
