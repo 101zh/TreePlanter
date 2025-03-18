@@ -9,6 +9,7 @@ public class TreeGenerators {
     public static TreeGenerator[] treeGeneratorsSorted;
     static long treas;
     static long treesPlanted;
+    static long treeGoal = 10000;
 
     TreeGenerators() {
         new TreeGenerator("student", "Student Volunteer", "I guess that free labor isn't free anymore `\\_(?_?)_/`", 5,
@@ -23,6 +24,10 @@ public class TreeGenerators {
         treeGeneratorsSorted = new TreeGenerator[TreeGenerators.treeGenerators.size()];
         TreeGenerators.treeGenerators.values().toArray(treeGeneratorsSorted);
         Arrays.sort(treeGeneratorsSorted);
+    }
+
+    public static long getTreeGoal() {
+        return treeGoal;
     }
 
     public static void updateTreeValues() {

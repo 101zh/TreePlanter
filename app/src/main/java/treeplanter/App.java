@@ -12,6 +12,7 @@ public class App {
         System.out.println(new App().getGreeting());
         new TerminalCommands();
         new TreeGenerators();
+        new ASCIIArt();
         UI.startGame();
     }
 }

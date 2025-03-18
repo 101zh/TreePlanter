@@ -25,26 +25,42 @@ public class UI {
     private static void introduction(Scanner scanner) {
         typeOutMessageln("After finishing one of your projects you decide it's time to go outside");
         clearAfterUserInput(scanner);
-        String a = "                                    .......   ....." + "\n" +
-                "                                     `$$$$$..*******." + "\n" +
-                "                                      ````$$$*****$$$$." + "\n" +
-                "                                    .%%%%%%&&***&%%%%***." + "\n" +
-                "                                      **%&#####&%***." + "\n" +
-                "                  you -> ^_^           `   @@@" + "\n" +
-                "                      _____________________@@@_______" + "\n" +
-                "                     /                           ___/" + "\n" +
-                "                ____/                     ______/" + "\n" +
-                "            ___/                        _|" + "\n" +
-                "           /                           /" + "\n" +
-                "         _/                            \\\\_" + "\n" +
-                "        /                                 \\";
 
-        fillInMessage(a, TimeUnit.MILLISECONDS, 5);
+        fillInMessage(ASCIIArt.getHike(), TimeUnit.MILLISECONDS, 2);
         System.out.println();
         typeOutMessageln("You climb and scale the closest mountain to you, finding a cherry blossom tree atop it");
         clearAfterUserInput(scanner);
 
-        typeOutMessageln("Hello my child, I see great potential within you");
+        fillInMessage(ASCIIArt.getTree(), TimeUnit.MICROSECONDS, 100);
+        System.out.println();
+        typeOutMessageln("Hello my child, I see great potential within you.");
+        typeOutMessageln("If you help me plant my children across the world, we can stop climate change.");
+        clearAfterUserInput(scanner);
+
+        typeOutMessageln(
+                "So to you, I will offer on trea for every tree that you plant, that way you can afford to do this.");
+        typeOutMessageln("Get started! you can plant a tree right now.");
+        System.out.println();
+        typeOutMessageln("(type \"plant\" to plant one tree)");
+
+        while (true) {
+            String str = scanner.nextLine();
+            if (str.contains("plant")) {
+                invokeCommand("plant");
+                break;
+            } else {
+                typeOutMessageln("Come on! try planting a tree.");
+            }
+        }
+
+        typeOutMessageln("Nice job. Take a look at what you have.");
+        invokeCommand("status");
+        typeOutMessageln("See look, you have one trea, which you can use to hire people to your cause");
+        typeOutMessageln("Over to the right you the number of trees you've planted in total");
+        typeOutMessageln("Let's try getting to " + TreeGenerators.getTreeGoal() + " trees planted!");
+        clearAfterUserInput(scanner);
+
+        typeOutMessageln("(type \"help\" to view what else you can do)");
     }
 
     private static void typeOutMessageln(String messsage) {
@@ -99,7 +115,7 @@ public class UI {
 
     private static void clearAfterUserInput(Scanner scanner) {
         try {
-            while(System.in.available() > 0) {
+            while (System.in.available() > 0) {
                 System.in.read(new byte[System.in.available()]);
             }
         } catch (IOException e) {
