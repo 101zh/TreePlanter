@@ -9,7 +9,7 @@ public class TreeGenerators {
     public static TreeGenerator[] treeGeneratorsSorted;
     static long treas;
     static long treesPlanted;
-    static long treeGoal = 1000000;
+    static long treeGoal = 500000;
     static int multiplier = 1;
 
     TreeGenerators() {
