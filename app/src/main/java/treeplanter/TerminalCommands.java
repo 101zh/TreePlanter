@@ -11,6 +11,7 @@ public class TerminalCommands {
         new Plant();
         new Hire();
         new Shop();
+        new Clear();
     }
 
     public static class Help extends Command {
@@ -49,7 +50,9 @@ public class TerminalCommands {
         public void action(String[] args) {
             System.out.println("Treas Owned: " + TreeGenerators.treas + "      Trees Planted: "
                     + TreeGenerators.treesPlanted + "\n" +
-                    "Total Trees Planted Per Second: " + TreeGenerators.getTotalTreesGeneratedPerSecond());
+                    "Total Trees Planted Per Second: " + TreeGenerators.getTotalTreesGeneratedPerSecond() + "\n" +
+                    "Percentage to " + TreeGenerators.getTreeGoal() + " trees planted: "
+                    + (int) ((double) TreeGenerators.treesPlanted / TreeGenerators.getTreeGoal() * 100) + "%");
         }
 
         @Override
