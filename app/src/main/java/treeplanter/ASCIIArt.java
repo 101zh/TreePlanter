@@ -1,8 +1,7 @@
 package treeplanter;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStream;
 
 public class ASCIIArt {
 
@@ -11,8 +10,10 @@ public class ASCIIArt {
 
     ASCIIArt() {
         try {
-            hike = new String(Files.readAllBytes(Paths.get("app\\src\\main\\resources\\hike.txt")));
-            tree = new String(Files.readAllBytes(Paths.get("app\\src\\main\\resources\\tree.txt")));
+            InputStream is = getClass().getClassLoader().getResourceAsStream("hike.txt");
+            hike = new String(is.readAllBytes());
+            is = getClass().getClassLoader().getResourceAsStream("tree.txt");
+            tree = new String(is.readAllBytes());
         } catch (IOException e) {
             e.fillInStackTrace();
         }
